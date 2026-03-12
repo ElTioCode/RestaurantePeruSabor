@@ -1,0 +1,100 @@
+-- ============================================================
+-- BASE DE DATOS: RestaurantePeruSabor
+-- Ejecutar en SQL Server Management Studio
+-- ============================================================
+
+CREATE DATABASE RestaurantePeruSabor;
+GO
+
+USE RestaurantePeruSabor;
+GO
+
+-- ════════════════════════════════════════════════════════════
+-- TABLA: Usuarios
+-- ════════════════════════════════════════════════════════════
+CREATE TABLE Usuarios (
+    Id            INT IDENTITY(1,1) PRIMARY KEY,
+    NombreUsuario NVARCHAR(50)  NOT NULL UNIQUE,
+    Clave         NVARCHAR(100) NOT NULL,
+    Rol           NVARCHAR(20)  NOT NULL,  -- ADMINISTRADOR, CAJERO
+    Activo        BIT           NOT NULL DEFAULT 1,
+    FechaCreacion DATETIME      NOT NULL DEFAULT GETDATE()
+);
+
+-- Insertar usuarios por defecto
+INSERT INTO Usuarios (NombreUsuario, Clave, Rol) VALUES ('admin',  '1234', 'ADMINISTRADOR');
+INSERT INTO Usuarios (NombreUsuario, Clave, Rol) VALUES ('cajero', '0000', 'CAJERO');
+GO
+
+-- ════════════════════════════════════════════════════════════
+-- TABLA: Clientes
+-- ════════════════════════════════════════════════════════════
+CREATE TABLE Clientes (
+    Id              INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre          NVARCHAR(100) NOT NULL,
+    TipoDocumento   NVARCHAR(20)  NOT NULL,  -- DNI, PASAPORTE, CE
+    NumeroDocumento NVARCHAR(20)  NOT NULL,
+    FechaRegistro   DATETIME      NOT NULL DEFAULT GETDATE()
+);
+GO
+
+-- ════════════════════════════════════════════════════════════
+-- TABLA: Pedidos
+-- ════════════════════════════════════════════════════════════
+CREATE TABLE Pedidos (
+    Id          INT IDENTITY(1,1) PRIMARY KEY,
+    ClienteId   INT           NOT NULL FOREIGN KEY REFERENCES Clientes(Id),
+    NumeroMesa  INT           NOT NULL,
+    NombreMozo  NVARCHAR(100) NOT NULL,
+    Total       DECIMAL(10,2) NOT NULL,
+    FechaPedido DATETIME      NOT NULL DEFAULT GETDATE()
+);
+GO
+
+-- ════════════════════════════════════════════════════════════
+-- TABLA: DetallePedidos
+-- ════════════════════════════════════════════════════════════
+CREATE TABLE DetallePedidos (
+    Id          INT IDENTITY(1,1) PRIMARY KEY,
+    PedidoId    INT           NOT NULL FOREIGN KEY REFERENCES Pedidos(Id),
+    NombrePlato NVARCHAR(100) NOT NULL,
+    Precio      DECIMAL(10,2) NOT NULL,
+    Cantidad    INT           NOT NULL,
+    Subtotal    DECIMAL(10,2) NOT NULL
+);
+GO
+
+-- ════════════════════════════════════════════════════════════
+-- TABLA: Ventas
+-- ════════════════════════════════════════════════════════════
+CREATE TABLE Ventas (
+    Id           INT IDENTITY(1,1) PRIMARY KEY,
+    PedidoId     INT           NOT NULL FOREIGN KEY REFERENCES Pedidos(Id),
+    ClienteId    INT           NOT NULL FOREIGN KEY REFERENCES Clientes(Id),
+    Descuento    DECIMAL(5,2)  NOT NULL DEFAULT 0,
+    MontoFinal   DECIMAL(10,2) NOT NULL,
+    Comprobante  NVARCHAR(50)  NOT NULL,
+    FechaVenta   DATETIME      NOT NULL DEFAULT GETDATE()
+);
+GO
+
+-- ════════════════════════════════════════════════════════════
+-- VISTAS útiles
+-- ════════════════════════════════════════════════════════════
+
+-- Vista resumen de ventas del día
+CREATE VIEW VentasHoy AS
+SELECT
+    v.Id,
+    c.Nombre        AS Cliente,
+    c.NumeroDocumento,
+    v.MontoFinal,
+    v.Comprobante,
+    v.Descuento,
+    v.FechaVenta
+FROM Ventas v
+INNER JOIN Clientes c ON v.ClienteId = c.Id
+WHERE CAST(v.FechaVenta AS DATE) = CAST(GETDATE() AS DATE);
+GO
+
+PRINT 'Base de datos RestaurantePeruSabor creada exitosamente!';

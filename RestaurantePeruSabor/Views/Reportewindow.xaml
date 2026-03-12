@@ -1,0 +1,74 @@
+﻿<Window x:Class="RestaurantePeruSabor.Views.ReporteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Reporte del Dia"
+        Height="500" Width="560"
+        WindowStartupLocation="CenterScreen"
+        Background="#1a1a2e">
+
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Text="REPORTE DE VENTAS DEL DIA"
+                   FontSize="15" FontWeight="Bold"
+                   Foreground="#89b4fa"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,18"/>
+
+        <DataGrid Grid.Row="1"
+                  x:Name="dgVentas"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Background="#181825"
+                  RowBackground="#1e1e2e"
+                  AlternatingRowBackground="#252540"
+                  Foreground="#cdd6f4"
+                  BorderBrush="#45475a"
+                  GridLinesVisibility="Horizontal"
+                  HorizontalGridLinesBrush="#313244"
+                  Margin="0,0,0,14">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="#"           Binding="{Binding Numero}"      Width="40"/>
+                <DataGridTextColumn Header="Cliente"     Binding="{Binding Cliente}"     Width="*"/>
+                <DataGridTextColumn Header="Comprobante" Binding="{Binding Comprobante}" Width="150"/>
+                <DataGridTextColumn Header="Total"       Binding="{Binding Total}"       Width="90"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Row="2" Background="#313244" CornerRadius="8"
+                Padding="14,10" Margin="0,0,0,16">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Total de ventas" Foreground="#6c7086" FontSize="10"/>
+                    <TextBlock x:Name="lblCantidad" Text="0"
+                               Foreground="#89b4fa" FontSize="18" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                    <TextBlock Text="Total del dia" Foreground="#6c7086" FontSize="10"/>
+                    <TextBlock x:Name="lblTotalDia" Text="S/ 0.00"
+                               Foreground="#a6e3a1" FontSize="18" FontWeight="Bold"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Button Grid.Row="3"
+                Content="Cerrar"
+                Height="40" FontSize="12"
+                Cursor="Hand"
+                Background="#313244"
+                Foreground="#a6adc8"
+                BorderThickness="0"
+                Click="BtnCerrar_Click"/>
+
+    </Grid>
+</Window>

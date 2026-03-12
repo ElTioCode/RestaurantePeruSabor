@@ -1,0 +1,109 @@
+﻿<Window x:Class="RestaurantePeruSabor.Views.RecepcionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Recepción de Cliente"
+        Height="500" Width="440"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#1a1a2e">
+
+    <Grid Margin="30">
+        <StackPanel>
+
+            <TextBlock Text="👤 RECEPCIÓN DE CLIENTE"
+                       FontSize="15" FontWeight="Bold"
+                       Foreground="#94e2d5"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,25"/>
+
+            <!-- NOMBRE -->
+            <TextBlock Text="Nombre del cliente" Foreground="#a6adc8" FontSize="11" Margin="0,0,0,4"/>
+            <TextBox x:Name="txtNombre" Height="36" FontSize="12" Padding="8,6"
+                     Background="#313244" Foreground="#cdd6f4"
+                     BorderBrush="#45475a" BorderThickness="1"
+                     CaretBrush="#cdd6f4" Margin="0,0,0,14"/>
+
+            <!-- TIPO DOCUMENTO -->
+            <TextBlock Text="Tipo de documento" Foreground="#a6adc8" FontSize="11" Margin="0,0,0,4"/>
+            <ComboBox x:Name="cmbTipoDoc" Height="36" FontSize="12"
+                      Background="#313244" Foreground="#cdd6f4"
+                      BorderBrush="#45475a" Margin="0,0,0,14">
+                <ComboBoxItem Content="DNI" IsSelected="True"/>
+                <ComboBoxItem Content="PASAPORTE"/>
+                <ComboBoxItem Content="CE"/>
+            </ComboBox>
+
+            <!-- NÚMERO DOCUMENTO -->
+            <TextBlock Text="Número de documento" Foreground="#a6adc8" FontSize="11" Margin="0,0,0,4"/>
+            <TextBox x:Name="txtNumDoc" Height="36" FontSize="12" Padding="8,6"
+                     Background="#313244" Foreground="#cdd6f4"
+                     BorderBrush="#45475a" BorderThickness="1"
+                     CaretBrush="#cdd6f4" Margin="0,0,0,14"/>
+
+            <!-- NÚMERO MESA -->
+            <TextBlock Text="Número de mesa" Foreground="#a6adc8" FontSize="11" Margin="0,0,0,4"/>
+            <TextBox x:Name="txtMesa" Height="36" FontSize="12" Padding="8,6"
+                     Background="#313244" Foreground="#cdd6f4"
+                     BorderBrush="#45475a" BorderThickness="1"
+                     CaretBrush="#cdd6f4" Margin="0,0,0,20"/>
+
+            <!-- MENSAJE -->
+            <TextBlock x:Name="lblMensaje" Text="" Foreground="#f38ba8"
+                       FontSize="11" HorizontalAlignment="Center" Margin="0,0,0,14"/>
+
+            <!-- BOTONES -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Content="← Volver"
+                        Height="40" FontSize="12" Cursor="Hand"
+                        Click="BtnVolver_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="Transparent" CornerRadius="6"
+                                                BorderBrush="#45475a" BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground" Value="#a6adc8"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button Grid.Column="2" Content="Continuar →"
+                        Height="40" FontSize="12" FontWeight="Bold"
+                        Cursor="Hand" Click="BtnContinuar_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="#94e2d5" CornerRadius="6">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#89dceb"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground" Value="#1a1a2e"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</Window>

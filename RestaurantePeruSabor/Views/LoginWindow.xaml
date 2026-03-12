@@ -1,0 +1,60 @@
+﻿<Window x:Class="RestaurantePeruSabor.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Login - Restaurante Peru Sabor"
+        Height="420" Width="400"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#1a1a2e">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+
+            <TextBlock Text="RESTAURANTE PERU SABOR"
+                       FontSize="15" FontWeight="Bold"
+                       Foreground="#cba6f7"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,6"/>
+
+            <TextBlock Text="Sistema de Gestion"
+                       FontSize="11"
+                       Foreground="#6c7086"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,30"/>
+
+            <TextBlock Text="Usuario" Foreground="#a6adc8" FontSize="12" Margin="0,0,0,5"/>
+            <TextBox x:Name="txtUsuario"
+                     Height="38" FontSize="13" Padding="10,8"
+                     Background="#313244" Foreground="#cdd6f4"
+                     BorderBrush="#45475a" BorderThickness="1"
+                     CaretBrush="#cdd6f4"
+                     Margin="0,0,0,15"/>
+
+            <TextBlock Text="Contrasena" Foreground="#a6adc8" FontSize="12" Margin="0,0,0,5"/>
+            <PasswordBox x:Name="txtClave"
+                         Height="38" FontSize="13" Padding="10,8"
+                         Background="#313244" Foreground="#cdd6f4"
+                         BorderBrush="#45475a" BorderThickness="1"
+                         Margin="0,0,0,20"/>
+
+            <TextBlock x:Name="lblMensaje"
+                       Text=""
+                       Foreground="#f38ba8"
+                       FontSize="11"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,15"/>
+
+            <Button x:Name="btnIngresar"
+                    Content="INGRESAR"
+                    Height="42" FontSize="13" FontWeight="Bold"
+                    Background="#cba6f7" Foreground="#1a1a2e"
+                    BorderThickness="0" Cursor="Hand"
+                    Click="BtnIngresar_Click"/>
+
+            <TextBlock Margin="0,20,0,0" HorizontalAlignment="Center"
+                       Foreground="#45475a" FontSize="10"
+                       />
+
+        </StackPanel>
+    </Grid>
+</Window>

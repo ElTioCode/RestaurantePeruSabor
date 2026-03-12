@@ -1,0 +1,115 @@
+﻿<Window x:Class="RestaurantePeruSabor.Views.MenuPrincipalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Menú Principal"
+        Height="480" Width="420"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#1a1a2e">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="320">
+
+            <!-- TÍTULO -->
+            <TextBlock Text="🍽️" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+            <TextBlock Text="RESTAURANTE PERU SABOR"
+                       FontSize="14" FontWeight="Bold"
+                       Foreground="#cba6f7"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,4"/>
+            <TextBlock x:Name="lblBienvenida"
+                       Text="Bienvenido"
+                       FontSize="11"
+                       Foreground="#a6adc8"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,30"/>
+
+            <!-- BOTÓN ATENDER CLIENTE -->
+            <Button x:Name="btnAtender"
+                    Content="👤  Atender Cliente"
+                    Height="48" FontSize="13" FontWeight="Bold"
+                    Margin="0,0,0,12"
+                    Cursor="Hand"
+                    Click="BtnAtender_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="#313244" CornerRadius="8" Padding="0,12">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#45475a"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#cdd6f4"/>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- BOTÓN REPORTE (solo admin) -->
+            <Button x:Name="btnReporte"
+                    Content="📊  Ver Reporte del Día"
+                    Height="48" FontSize="13" FontWeight="Bold"
+                    Margin="0,0,0,12"
+                    Cursor="Hand"
+                    Visibility="Collapsed"
+                    Click="BtnReporte_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="#2a2a3e" CornerRadius="8" Padding="0,12">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#313244"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#89b4fa"/>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- BOTÓN CERRAR SESIÓN -->
+            <Button x:Name="btnCerrar"
+                    Content="🚪  Cerrar Sesión"
+                    Height="44" FontSize="12"
+                    Margin="0,10,0,0"
+                    Cursor="Hand"
+                    Click="BtnCerrar_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="Transparent" CornerRadius="8"
+                                            BorderBrush="#45475a" BorderThickness="1" Padding="0,10">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#313244"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#f38ba8"/>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+        </StackPanel>
+    </Grid>
+</Window>

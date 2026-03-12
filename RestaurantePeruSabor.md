@@ -3,6 +3,9 @@ Raiz del Proyecto
 <img width="703" height="604" alt="image" src="https://github.com/user-attachments/assets/b589d183-4f6a-4b17-b5d4-a3912558f01e" />
 <img width="737" height="466" alt="image" src="https://github.com/user-attachments/assets/bf41c5a3-bf5a-4458-9805-f9a756996f78" />
 <img width="723" height="419" alt="image" src="https://github.com/user-attachments/assets/be78f711-3090-4e80-a81d-c649f2e16db6" />
+
+
+
 🍽️ Restaurante Peru Sabor
 Sistema de gestión para restaurante desarrollado en C# WPF con arquitectura en capas, base de datos SQL Server mediante Entity Framework Core 8 y generación de comprobantes en PDF.
 
